@@ -13,7 +13,7 @@ module.exports = {
         filename: '[name].js',
         publicPath: '/',
         library: [ 'sham-ui-without-flush-loader', 'sham-ui-without-flush-loader/[name]' ],
-        libraryTarget: 'umd'
+        libraryTarget: 'commonjs2'
     },
     externals: [
         'sham-ui',

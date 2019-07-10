@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`example from README 1`] = `
+Object {
+  "Constructor": "dummy",
+  "Options": Object {
+    "ComponentForLoading": [Function],
+    "ID": "component",
+    "containerSelector": "body",
+    "loaded": false,
+    "types": Array [],
+  },
+  "html": "
+<!--if-->
+<!--WithoutFlushLoader-->
+<!--if-->
+",
+}
+`;
+
+exports[`example from README 2`] = `
+Object {
+  "Constructor": "dummy",
+  "Options": Object {
+    "ComponentForLoading": [Function],
+    "ID": "component",
+    "containerSelector": "body",
+    "loaded": false,
+    "types": Array [],
+  },
+  "html": "
+Loading...
+<!--DynamicComponent-->
+<!--if-->
+<!--WithoutFlushLoader-->
+<!--if-->
+",
+}
+`;
+
+exports[`renders correctly 1`] = `
+Object {
+  "Constructor": "WithoutFlushLoader",
+  "Options": Object {
+    "ID": "component",
+    "containerSelector": "body",
+    "delay": 100,
+    "loadingComponent": [Function],
+    "showLoader": false,
+    "types": Array [],
+  },
+  "html": "<!--if-->",
+}
+`;
+
+exports[`renders correctly 2`] = `
+Object {
+  "Constructor": "WithoutFlushLoader",
+  "Options": Object {
+    "ID": "component",
+    "containerSelector": "body",
+    "delay": 100,
+    "loadingComponent": [Function],
+    "showLoader": true,
+    "types": Array [],
+  },
+  "html": "
+Loading...
+<!--DynamicComponent-->
+<!--if-->
+",
+}
+`;

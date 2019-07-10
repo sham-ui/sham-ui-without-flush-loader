@@ -1,0 +1,51 @@
+<template>
+    {% import WithoutFlushLoader from '../../../src/without-flush-loader.sfc' %}
+    {% import Loader from './Loader.sht' %}
+
+    <main>
+        <pre>
+            Loader without flush for sham-ui
+        </pre>
+
+        <p>
+            <button :onclick={{::this.toggleLoaded}}>Toggle loaded. Now: {{loaded}}</button>
+        </p>
+
+        <p>
+            <label for="delay">Delay: {{delay}}</label>
+            <input id="delay" value={{delay}} :oninput={{::this.delayOnInput}}>
+        </p>
+
+        <p>
+            {% if loaded %}
+                Content loaded!
+            {% else %}
+                WithoutFlushLoader:
+                <WithoutFlushLoader
+                    loadingComponent={{Loader}}
+                    delay={{delay}}/>
+            {% endif %}
+        </p>
+    </main>
+</template>
+
+<script>
+    import { options } from 'sham-ui';
+
+    export default class AppComponent extends Template {
+        @options loaded = false;
+        @options delay = 100;
+
+        toggleLoaded() {
+            this.update( {
+                loaded: !this.options.loaded
+            } );
+        }
+
+        delayOnInput( e ) {
+            this.update( {
+                delay: parseInt( e.target.value, 10 )
+            } );
+        }
+    }
+</script>

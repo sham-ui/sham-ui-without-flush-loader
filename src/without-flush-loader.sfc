@@ -1,0 +1,42 @@
+<template>
+    {% import DynamicComponent from 'sham-ui-dynamic-component' %}
+
+    {% if showLoader %}
+        <DynamicComponent component={{loadingComponent}}/>
+    {% endif %}
+</template>
+
+<script>
+    import { options } from 'sham-ui';
+
+    export default class WithoutFlushLoader extends Template {
+        @options showLoader = false;
+
+        /**
+         * Delay (ms) before REAL show loadingComponent
+         * @type {number}
+         */
+        @options delay = 100;
+
+        update() {
+            super.update( ...arguments );
+
+            // Dont't start after timeout expired & don't overide already started timer
+            if ( !this.options.showLoader && this._timeoutID === undefined ) {
+                this._timeoutID = setTimeout( ::this._timeoutExpired, this.options.delay );
+            }
+        }
+
+        _timeoutExpired() {
+            this.update( {
+                showLoader: true
+            } );
+            this._timeoutID = undefined;
+        }
+
+        remove() {
+            super.remove( ...arguments );
+            clearTimeout( this._timeoutID );
+        }
+    }
+</script>

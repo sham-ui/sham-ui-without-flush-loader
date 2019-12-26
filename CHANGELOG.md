@@ -1,3 +1,6 @@
+## master
+* Regenerate with `sham-ui-cli`
+
 ## 0.0.2
 * Fix build
 

@@ -1,8 +1,12 @@
 # sham-ui-without-flush-loader
 
-> Loader without flush for sham-ui
+[![Build Status](https://travis-ci.com/sham-ui/sham-ui-without-flush-loader.svg?branch=master)](https://travis-ci.com/sham-ui/sham-ui-without-flush-loader)
+[![npm version](https://badge.fury.io/js/sham-ui-without-flush-loader.svg)](https://badge.fury.io/js/sham-ui-without-flush-loader)
+[![MIT Licence](https://badges.frapsoft.com/os/mit/mit.svg?v=103)](https://opensource.org/licenses/mit-license.php)
 
-## Install
+Loader without flush for sham-ui
+
+### Install
 ```bash
 # npm
 npm install sham-ui-without-flush-loader
@@ -13,14 +17,5 @@ npm install sham-ui-without-flush-loader
 yarn add sham-ui-without-flush-loader
 ```
 
-## Usage
-```html
-{% import WithoutFlushLoader from 'sham-ui-without-flush-loader' %}
-...
-    {% if loaded %}
-        Content loaded!
-    {% else %}
-        <WithoutFlushLoader 
-            loadingComponent={{ComponentForLoading}}/>
-    {% endif %}
-...
+### API
+

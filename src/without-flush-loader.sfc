@@ -7,9 +7,10 @@
 </template>
 
 <script>
-    import { options } from 'sham-ui';
+    import { mergeWithTemplate, options } from 'sham-ui-macro/babel.macro';
 
-    export default class WithoutFlushLoader extends Template {
+    @mergeWithTemplate
+    class WithoutFlushLoader extends Template {
         @options showLoader = false;
 
         /**
@@ -18,11 +19,11 @@
          */
         @options delay = 100;
 
-        update() {
-            super.update( ...arguments );
+        didMount() {
+            super.didMount( ...arguments );
 
-            // Dont't start after timeout expired & don't overide already started timer
-            if ( !this.options.showLoader && this._timeoutID === undefined ) {
+            // Dont't start after timeout expired
+            if ( !this.options.showLoader ) {
                 this._timeoutID = setTimeout( ::this._timeoutExpired, this.options.delay );
             }
         }
@@ -39,4 +40,6 @@
             clearTimeout( this._timeoutID );
         }
     }
+
+    export default WithoutFlushLoader;
 </script>

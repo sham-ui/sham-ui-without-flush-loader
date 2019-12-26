@@ -6,9 +6,7 @@ Object {
   "Options": Object {
     "ComponentForLoading": [Function],
     "ID": "component",
-    "containerSelector": "body",
     "loaded": false,
-    "types": Array [],
   },
   "html": "
 <!--if-->
@@ -24,9 +22,7 @@ Object {
   "Options": Object {
     "ComponentForLoading": [Function],
     "ID": "component",
-    "containerSelector": "body",
     "loaded": false,
-    "types": Array [],
   },
   "html": "
 Loading...
@@ -43,11 +39,9 @@ Object {
   "Constructor": "WithoutFlushLoader",
   "Options": Object {
     "ID": "component",
-    "containerSelector": "body",
     "delay": 100,
     "loadingComponent": [Function],
     "showLoader": false,
-    "types": Array [],
   },
   "html": "<!--if-->",
 }
@@ -58,11 +52,9 @@ Object {
   "Constructor": "WithoutFlushLoader",
   "Options": Object {
     "ID": "component",
-    "containerSelector": "body",
     "delay": 100,
     "loadingComponent": [Function],
     "showLoader": true,
-    "types": Array [],
   },
   "html": "
 Loading...

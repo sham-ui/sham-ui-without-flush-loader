@@ -30,9 +30,10 @@
 </template>
 
 <script>
-    import { options } from 'sham-ui';
+    import { mergeWithTemplate, options } from 'sham-ui-macro/babel.macro';
 
-    export default class AppComponent extends Template {
+    @mergeWithTemplate
+    class AppComponent extends Template {
         @options loaded = false;
         @options delay = 100;
 
@@ -48,4 +49,6 @@
             } );
         }
     }
+
+    export default AppComponent;
 </script>

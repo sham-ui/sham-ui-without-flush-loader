@@ -1,3 +1,7 @@
+## 2.0.0-alpha.1
+* Update dependencies
+* Change project structure to sham-ui 5.x
+
 ## 1.1.1
 * Update dependencies
 * Update nodejs version in travis

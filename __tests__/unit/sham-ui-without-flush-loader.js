@@ -3,14 +3,6 @@ import WithoutFlushLoader from '../../src/without-flush-loader.sfc';
 
 jest.useFakeTimers();
 
-beforeEach( () => {
-    window.WithoutFlushLoader = WithoutFlushLoader;
-} );
-
-afterEach( () => {
-    delete window.WithoutFlushLoader;
-} );
-
 it( 'renders correctly', () => {
     const meta = renderer( WithoutFlushLoader, {
         loadingComponent: compile`Loading...`
@@ -26,7 +18,9 @@ it( 'renders correctly', () => {
 
 it( 'example from README', () => {
     const meta = renderer(
-        compile`
+        compile( {
+            WithoutFlushLoader
+        } )`
             {% if loaded %}
                 Content loaded!
             {% else %}

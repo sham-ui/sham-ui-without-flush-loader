@@ -7,39 +7,36 @@
 </template>
 
 <script>
-    import { mergeWithTemplate, options } from 'sham-ui-macro/babel.macro';
+    function WithoutFlushLoader( options, update, didMount, onRemove ) {
+        const showLoader = ref();
+        const delay = ref();
 
-    @mergeWithTemplate
-    class WithoutFlushLoader extends Template {
-        @options showLoader = false;
+        const state = options( {
+            [ showLoader ]: false,
 
-        /**
-         * Delay (ms) before REAL show loadingComponent
-         * @type {number}
-         */
-        @options delay = 100;
+            /**
+             * Delay (ms) before REAL show loadingComponent
+             * @type {Number}
+             */
+            [ delay ]: 100
+        } );
 
-        didMount() {
-            super.didMount( ...arguments );
+        let timeoutID;
+        didMount( () => {
 
             // Dont't start after timeout expired
-            if ( !this.options.showLoader ) {
-                this._timeoutID = setTimeout( ::this._timeoutExpired, this.options.delay );
+            if ( !state[ showLoader ] ) {
+                timeoutID = setTimeout(
+                    () => update( {
+                        [ showLoader ]: true
+                    } ),
+                    state[ delay ]
+                );
             }
-        }
+        } );
 
-        _timeoutExpired() {
-            this.update( {
-                showLoader: true
-            } );
-            this._timeoutID = undefined;
-        }
-
-        remove() {
-            super.remove( ...arguments );
-            clearTimeout( this._timeoutID );
-        }
+        onRemove( () => clearTimeout( timeoutID ) );
     }
 
-    export default WithoutFlushLoader;
+    export default Component( Template, WithoutFlushLoader );
 </script>

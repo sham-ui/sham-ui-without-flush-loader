@@ -8,12 +8,12 @@
         </pre>
 
         <p>
-            <button :onclick={{::this.toggleLoaded}}>Toggle loaded. Now: {{loaded}}</button>
+            <button :onclick={{this[ ref( 'toggleLoaded' ) ]}}>Toggle loaded. Now: {{loaded}}</button>
         </p>
 
         <p>
             <label for="delay">Delay: {{delay}}</label>
-            <input id="delay" value={{delay}} :oninput={{::this.delayOnInput}}>
+            <input id="delay" value={{delay}} :oninput={{this[ ref( 'delayOnInput' ) ]}}>
         </p>
 
         <p>
@@ -30,25 +30,22 @@
 </template>
 
 <script>
-    import { mergeWithTemplate, options } from 'sham-ui-macro/babel.macro';
+    function App( options, update ) {
+        const loaded = ref();
+        const delay = ref();
 
-    @mergeWithTemplate
-    class AppComponent extends Template {
-        @options loaded = false;
-        @options delay = 100;
+        const state = options( {
+            [ loaded ]: false,
+            [ delay ]: 100
+        } );
 
-        toggleLoaded() {
-            this.update( {
-                loaded: !this.options.loaded
-            } );
-        }
+        this[ ref( 'toggleLoaded' ) ] = () => update( {
+            [ loaded ]: !state[ loaded ]
+        } );
 
-        delayOnInput( e ) {
-            this.update( {
-                delay: parseInt( e.target.value, 10 )
-            } );
-        }
+        this[ ref( 'delayOnInput' ) ] = ( e ) => update( {
+            [ delay ]: parseInt( e.target.value, 10 )
+        } );
     }
-
-    export default AppComponent;
+    export default Component( Template, App );
 </script>

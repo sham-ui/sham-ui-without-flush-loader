@@ -2,23 +2,21 @@
 
 exports[`example from README 1`] = `
 Object {
-  "Constructor": "dummy",
   "Options": Object {
     "ComponentForLoading": [Function],
     "ID": "component",
     "loaded": false,
   },
   "html": "
-<!--if-->
-<!--WithoutFlushLoader-->
-<!--if-->
+<!--0-->
+<!--0-->
+<!--0-->
 ",
 }
 `;
 
 exports[`example from README 2`] = `
 Object {
-  "Constructor": "dummy",
   "Options": Object {
     "ComponentForLoading": [Function],
     "ID": "component",
@@ -26,30 +24,28 @@ Object {
   },
   "html": "
 Loading...
-<!--DynamicComponent-->
-<!--if-->
-<!--WithoutFlushLoader-->
-<!--if-->
+<!--0-->
+<!--0-->
+<!--0-->
+<!--0-->
 ",
 }
 `;
 
 exports[`renders correctly 1`] = `
 Object {
-  "Constructor": "WithoutFlushLoader",
   "Options": Object {
     "ID": "component",
     "delay": 100,
     "loadingComponent": [Function],
     "showLoader": false,
   },
-  "html": "<!--if-->",
+  "html": "<!--0-->",
 }
 `;
 
 exports[`renders correctly 2`] = `
 Object {
-  "Constructor": "WithoutFlushLoader",
   "Options": Object {
     "ID": "component",
     "delay": 100,
@@ -58,8 +54,8 @@ Object {
   },
   "html": "
 Loading...
-<!--DynamicComponent-->
-<!--if-->
+<!--0-->
+<!--0-->
 ",
 }
 `;

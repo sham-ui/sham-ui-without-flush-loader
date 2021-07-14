@@ -8,12 +8,12 @@
         </pre>
 
         <p>
-            <button :onclick={{this[ ref( 'toggleLoaded' ) ]}}>Toggle loaded. Now: {{loaded}}</button>
+            <button :onclick={{this$.toggleLoaded}}>Toggle loaded. Now: {{loaded}}</button>
         </p>
 
         <p>
             <label for="delay">Delay: {{delay}}</label>
-            <input id="delay" value={{delay}} :oninput={{this[ ref( 'delayOnInput' ) ]}}>
+            <input id="delay" value={{delay}} :oninput={{this$.delayOnInput}}>
         </p>
 
         <p>
@@ -31,19 +31,19 @@
 
 <script>
     function App( options, update ) {
-        const loaded = ref();
-        const delay = ref();
+        const loaded = $();
+        const delay = $();
 
         const state = options( {
             [ loaded ]: false,
             [ delay ]: 100
         } );
 
-        this[ ref( 'toggleLoaded' ) ] = () => update( {
+        this$.toggleLoaded = () => update( {
             [ loaded ]: !state[ loaded ]
         } );
 
-        this[ ref( 'delayOnInput' ) ] = ( e ) => update( {
+        this$.delayOnInput = ( e ) => update( {
             [ delay ]: parseInt( e.target.value, 10 )
         } );
     }

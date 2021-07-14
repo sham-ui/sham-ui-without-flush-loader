@@ -8,8 +8,8 @@
 
 <script>
     function WithoutFlushLoader( options, update, didMount, onRemove ) {
-        const showLoader = ref();
-        const delay = ref();
+        const showLoader = $();
+        const delay = $();
 
         const state = options( {
             [ showLoader ]: false,

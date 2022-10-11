@@ -30,7 +30,7 @@
 </template>
 
 <script>
-    function App( options, update ) {
+    function App( options ) {
         const loaded = $();
         const delay = $();
 
@@ -39,13 +39,9 @@
             [ delay ]: 100
         } );
 
-        this$.toggleLoaded = () => update( {
-            [ loaded ]: !state[ loaded ]
-        } );
+        this$.toggleLoaded = () => state[ loaded ] = !state[ loaded ];
 
-        this$.delayOnInput = ( e ) => update( {
-            [ delay ]: parseInt( e.target.value, 10 )
-        } );
+        this$.delayOnInput = ( e ) => state[ delay ] = parseInt( e.target.value, 10 );
     }
     export default Component( Template, App );
 </script>

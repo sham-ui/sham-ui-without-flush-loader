@@ -8,12 +8,12 @@ it( 'renders correctly', () => {
         loadingComponent: compile`Loading...`
     } );
     expect( meta.toJSON() ).toMatchSnapshot();
-    expect( meta.component.container.textContent ).toBe( '' );
+    expect( meta.ctx.container.textContent ).toBe( '' );
 
     jest.runAllTimers();
 
     expect( meta.toJSON() ).toMatchSnapshot();
-    expect( meta.component.container.textContent ).toBe( 'Loading...' );
+    expect( meta.ctx.container.textContent ).toBe( 'Loading...' );
 } );
 
 it( 'example from README', () => {
@@ -35,17 +35,17 @@ it( 'example from README', () => {
         }
     );
     expect( meta.toJSON() ).toMatchSnapshot();
-    expect( meta.component.container.textContent ).toBe( '' );
+    expect( meta.ctx.container.textContent ).toBe( '' );
     meta.component.update( {
         loaded: true
     } );
-    expect( meta.component.container.textContent ).toBe( ' Content loaded! ' );
+    expect( meta.ctx.container.textContent ).toBe( ' Content loaded! ' );
     meta.component.update( {
         loaded: false
     } );
-    expect( meta.component.container.textContent ).toBe( '' );
+    expect( meta.ctx.container.textContent ).toBe( '' );
 
     jest.runAllTimers();
     expect( meta.toJSON() ).toMatchSnapshot();
-    expect( meta.component.container.textContent ).toBe( 'Loading...' );
+    expect( meta.ctx.container.textContent ).toBe( 'Loading...' );
 } );

@@ -7,7 +7,7 @@
 </template>
 
 <script>
-    function WithoutFlushLoader( options, update, didMount, onRemove ) {
+    function WithoutFlushLoader( options, didMount ) {
         const showLoader = $();
         const delay = $();
 
@@ -21,21 +21,17 @@
             [ delay ]: 100
         } );
 
-        let timeoutID;
         didMount( () => {
 
-            // Dont't start after timeout expired
+            // Don't start after timeout expired
             if ( !state[ showLoader ] ) {
-                timeoutID = setTimeout(
-                    () => update( {
-                        [ showLoader ]: true
-                    } ),
+                const timeoutID = setTimeout(
+                    () => state[ showLoader ] = true,
                     state[ delay ]
                 );
+                return () => clearTimeout( timeoutID );
             }
         } );
-
-        onRemove( () => clearTimeout( timeoutID ) );
     }
 
     export default Component( Template, WithoutFlushLoader );

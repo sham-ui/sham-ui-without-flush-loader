@@ -8,12 +8,12 @@
         </pre>
 
         <p>
-            <button :onclick={{this$.toggleLoaded}}>Toggle loaded. Now: {{loaded}}</button>
+            <button :onclick={{() => state$.loaded = !loaded}}>Toggle loaded. Now: {{loaded}}</button>
         </p>
 
         <p>
             <label for="delay">Delay: {{delay}}</label>
-            <input id="delay" value={{delay}} :oninput={{this$.delayOnInput}}>
+            <input id="delay" value={{delay}} :oninput={{ e => state$.delay = window.parseInt( e.target.value, 10 )}}>
         </p>
 
         <p>
@@ -38,10 +38,6 @@
             [ loaded ]: false,
             [ delay ]: 100
         } );
-
-        this$.toggleLoaded = () => state[ loaded ] = !state[ loaded ];
-
-        this$.delayOnInput = ( e ) => state[ delay ] = parseInt( e.target.value, 10 );
     }
     export default Component( Template, App );
 </script>
